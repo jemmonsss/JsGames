@@ -30,7 +30,7 @@ jobs:
         mv dist/menu output/menu.exe
 
     - name: Upload EXE to Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: JsGames-Launcher
         path: output/menu.exe
