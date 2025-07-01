@@ -1,9 +1,9 @@
-name: Build Pygame Launcher
+name: Build and Deploy Pygame Launcher
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # manual run
+  workflow_dispatch:
 
 jobs:
   build:
@@ -26,11 +26,12 @@ jobs:
     - name: Build menu.py as EXE
       run: |
         pyinstaller --onefile menu.py
-        mkdir output
-        mv dist/menu output/menu.exe
+        mkdir public
+        mv dist/menu public/menu.exe
 
-    - name: Upload EXE to Artifacts
-      uses: actions/upload-artifact@v4
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        name: JsGames-Launcher
-        path: output/menu.exe
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        publish_branch: gh-pages
