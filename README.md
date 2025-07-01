@@ -74,3 +74,17 @@ snake.launch()     # Start Snake
 pong.launch()      # Start Pong
 tfe.launch()       # Start 2048
 breakout.launch()  # Start Breakout
+```
+### Option 2: Run with Python
+
+Make sure Python and Pygame are installed:
+
+```bash
+pip install pygame
+
+
+python menu.py        # Game launcher
+python breakout.py    # Play Breakout
+python pong.py        # Play Pong
+python snake.py       # Play Snake
+python tfe.py         # Play 2048
