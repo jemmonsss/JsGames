@@ -1,4 +1,4 @@
-name: Build and Deploy Pygame EXE to GitHub Pages
+name: Build and Deploy Game Launcher
 
 on:
   push:
@@ -29,8 +29,16 @@ jobs:
         mkdir -p public
         mv dist/menu public/menu.exe
 
-    - name: 📁 List public contents (debug)
-      run: ls -R public
+    - name: 📝 Generate index.html
+      run: |
+        echo "<!DOCTYPE html>
+        <html>
+        <head><meta charset='utf-8'><title>JsGames Download</title></head>
+        <body style='font-family:sans-serif;text-align:center;margin-top:50px;'>
+        <h1>🎮 JsGames Launcher</h1>
+        <p><a href='menu.exe' download>⬇️ Download menu.exe</a></p>
+        <p>Made by jemmonsss</p>
+        </body></html>" > public/index.html
 
     - name: 🚀 Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
